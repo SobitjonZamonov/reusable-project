@@ -60,9 +60,9 @@ export const ProductsList = () => {
     const handleEdit = (product: LoanProduct) => {
         setEditingProduct(product);
         setFormData({
-            title_ru: product.title_ru,
-            title_uz: product.title_uz,
-            title_en: product.title_en,
+            title_ru: product.title_ru || "",
+            title_uz: product.title_uz || "",
+            title_en: product.title_en || "",
             max_amount: product.max_amount,
             percent: parseFloat(product.percent) || 0,
             lifetime: product.lifetime ? parseFloat(product.lifetime) : null,
