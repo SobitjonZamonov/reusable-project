@@ -1,9 +1,11 @@
-import { useQuery } from "@tanstack/react-query"
-import { getMe } from "../api/me"
+import { api } from "@/shared/api/axios";
+import { MeSchema } from "./auth.schema";
 
-export const useMe = () => {
-    return useQuery({
-        queryKey: ["me"],
-        queryFn: getMe,
-    })
-}
+
+export const getMe = async () => {
+    const response = await api.get(
+        "/admin/auth/me"
+    );
+
+    return MeSchema.parse(response.data);
+};

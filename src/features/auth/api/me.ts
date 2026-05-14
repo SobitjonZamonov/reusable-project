@@ -1,10 +1,10 @@
-import { api } from "@/shared/api/axios"
+import { useQuery } from "@tanstack/react-query";
+import { getMe } from "../model/use-me";
 
-export const getMe = async () => {
-  const res = await api.get("/admin/auth/me", {
-    headers: {
-      Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-    },
-  })
-  return res.data
-}
+export const useMe = () => {
+    return useQuery({
+        queryKey: ["me"],
+        queryFn: getMe,
+        retry: false,
+    });
+};

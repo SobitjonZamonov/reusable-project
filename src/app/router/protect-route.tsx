@@ -1,12 +1,24 @@
-// app/router/protected-route.tsx
-import { Navigate } from "react-router-dom"
+import { Navigate } from "react-router-dom";
 
-export const ProtectedRoute = ({ children }: any) => {
-    const token = localStorage.getItem("accessToken")
+import { getAccessToken } from "@/shared/lib/cookies";
+
+interface Props {
+    children: React.ReactNode;
+}
+
+export const ProtectedRoute = ({
+    children,
+}: Props) => {
+    const token = getAccessToken();
 
     if (!token) {
-        return <Navigate to="/login" />
+        return (
+            <Navigate
+                to="/login"
+                replace
+            />
+        );
     }
 
-    return children
-}
+    return children;
+};

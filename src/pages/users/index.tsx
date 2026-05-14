@@ -1,4 +1,5 @@
-import { UsersList } from "../../features/users"
+import { UsersList } from "@/features/users";
+
 
 const UsersPage = () => {
     return <UsersList />
